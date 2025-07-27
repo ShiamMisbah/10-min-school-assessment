@@ -1,4 +1,4 @@
-import { Checklist, CtaText } from '@/dataType'
+import { Checklist, CtaText, Medium } from '@/dataType'
 import React from 'react'
 import Carousal from './components/Carousal';
 import AllCheckList from './components/AllCheckList';
@@ -6,15 +6,16 @@ import AllCheckList from './components/AllCheckList';
 interface SidebarProps {
   ctaText: CtaText;
   checkList: Checklist[];
+  mediaArray: Medium[];
 }
 
-const SideBar = ({ctaText, checkList}: SidebarProps) => {
-    console.log(ctaText, checkList);
+const SideBar = ({ctaText, checkList, mediaArray}: SidebarProps) => {  
+  console.log(mediaArray);
     
   return (
     <div className="absolute top-[50px] right-0 w-[390px] min-h-[300px] bg-white flex flex-col">
       <div className="w-full h-full border border-gray-300 p-4 flex flex-col gap-4 text-black  ">
-        <Carousal />
+        <Carousal mediaArray={mediaArray}  />
         <div className="text-3xl font-bold">৳ 3850</div>
         <button className="w-full bg-green-700 hover:bg-green-900 text-xl py-2 shadow-green-900 rounded-md text-white ">
           {ctaText.name}

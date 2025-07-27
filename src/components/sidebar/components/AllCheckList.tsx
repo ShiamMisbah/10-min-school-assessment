@@ -6,9 +6,7 @@ interface AllCheckListProps {
     checkList: Checklist[];
 }
 
-const AllCheckList = ({checkList} : AllCheckListProps) => {
-    console.log(checkList);
-    
+const AllCheckList = ({checkList} : AllCheckListProps) => {    
   return (
     <div>
       {checkList.map((data: Checklist) => (

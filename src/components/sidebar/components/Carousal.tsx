@@ -6,60 +6,130 @@ import { Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Medium } from "@/dataType";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import Image from "next/image";
 
-const images = [
-  "https://swiperjs.com/demos/images/nature-1.jpg",
-  "https://swiperjs.com/demos/images/nature-2.jpg",
-  "https://swiperjs.com/demos/images/nature-3.jpg",
-  "https://swiperjs.com/demos/images/nature-4.jpg",
-  "https://swiperjs.com/demos/images/nature-1.jpg",
-  "https://swiperjs.com/demos/images/nature-2.jpg",
-  "https://swiperjs.com/demos/images/nature-3.jpg",
-  "https://swiperjs.com/demos/images/nature-4.jpg",
-];
+interface CarouselProps {
+  mediaArray: Medium[];
+}
 
-export default function Carousel() {
+export default function Carousel({mediaArray}: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  console.log(mediaArray);
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      {/* Main Carousel */}
-      <Swiper
-        spaceBetween={10}
-        navigation
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[Navigation, Thumbs]}
-        className="mb-4"
-      >
-        {images.map((img, idx) => (
-          <SwiperSlide key={idx}>
-            <img
-              src={img}
-              alt={`Slide ${idx}`}
-              className="w-full h-64 object-cover rounded-lg"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="w-full h-[220px] relative mb-4">
+        {/* Main Carousel */}
+        {/* Custom Arrows */}
+        <button
+          ref={prevRef}
+          className="absolute z-10 left-2 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100"
+        >
+          <ChevronLeft size={15} />
+        </button>
+        <button
+          ref={nextRef}
+          className="absolute z-10 right-2 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100"
+        >
+          <ChevronRight size={15} />
+        </button>
+        <Swiper
+          spaceBetween={10}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          className="w-full h-full"
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[Navigation, Thumbs]}
+          onBeforeInit={(swiper) => {
+            // Fix for navigation ref assignment
+            // @ts-ignore
+            swiper.params.navigation.prevEl = prevRef.current;
+            // @ts-ignore
+            swiper.params.navigation.nextEl = nextRef.current;
+          }}
+          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        >
+          {mediaArray.map((media, idx) => (
+            <SwiperSlide key={idx}>
+              {media.resource_type === "image" && (
+                <Image
+                  src={media.resource_value}
+                  alt={media.name}
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              )}
+              {media.resource_type === "video" && (
+                <div className="w-full h-full flex items-center justify-center">
+                  <Image
+                    src={media.thumbnail_url}
+                    alt={media.name}
+                    fill
+                    className="w-full h-full object-contain rounded-lg"
+                  />
+                  <button>
+                    <Play
+                      size={36}
+                      className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow rounded-full p-2 hover:bg-gray-100 cursor-pointer"
+                    />
+                  </button>
+                </div>
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
       {/* Thumbnail Carousel */}
       <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView="auto"
         freeMode
         watchSlidesProgress
         modules={[Thumbs]}
         className="cursor-pointer"
       >
-        {images.map((img, idx) => (
-          <SwiperSlide key={idx}>
-            <img
-              src={img}
-              alt={`Thumb ${idx}`}
-              className="w-full h-10 object-cover rounded-md border"
-            />
+        {mediaArray.map((media, idx) => (
+          <SwiperSlide
+            key={idx}
+            className={`relative rounded-md overflow-hidden ${
+              idx === activeIndex ? "border-2 border-green-500" : "border"
+            }`}
+            style={{ width: "56px", height: "32px" }}
+          >
+            {media.resource_type === "image" && (
+              <Image
+                src={media.resource_value}
+                alt={media.name}
+                fill
+                className="object-cover"
+              />
+            )}
+            {media.resource_type === "video" && (
+              <div>
+                <Image
+                  src={media.thumbnail_url}
+                  alt={media.name}
+                  fill
+                  className="object-contain"
+                />
+                <button>
+                  <Play
+                    size={20}
+                    className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow rounded-full p-1 cursor-pointer"
+                  />
+                </button>
+              </div>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
