@@ -18,9 +18,8 @@ interface CarouselProps {
 export default function Carousel({mediaArray}: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log(mediaArray);
-    const prevRef = useRef(null);
-    const nextRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   return (
     <div className="w-full max-w-3xl mx-auto">

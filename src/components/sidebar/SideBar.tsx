@@ -9,9 +9,7 @@ interface SidebarProps {
   mediaArray: Medium[];
 }
 
-const SideBar = ({ctaText, checkList, mediaArray}: SidebarProps) => {  
-  console.log(mediaArray);
-    
+const SideBar = ({ctaText, checkList, mediaArray}: SidebarProps) => {      
   return (
     <div className="absolute top-[50px] right-0 w-[390px] min-h-[300px] bg-white flex flex-col">
       <div className="w-full h-full border border-gray-300 p-4 flex flex-col gap-4 text-black  ">

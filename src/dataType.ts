@@ -39,6 +39,10 @@ export interface Section {
     values: any[]
 }
 
+export interface SingleSectionProps {
+  data: Section | undefined;
+}
+
 export interface Seo {
   title: string;
   description: string;
