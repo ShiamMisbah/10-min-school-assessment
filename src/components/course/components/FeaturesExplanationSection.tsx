@@ -75,4 +75,6 @@ const FeaturesExplanationSection = forwardRef<
   );
 });
 
+FeaturesExplanationSection.displayName = "FeaturesExplanationSection";
+
 export default FeaturesExplanationSection;

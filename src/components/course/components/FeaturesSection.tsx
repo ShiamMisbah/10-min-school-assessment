@@ -54,4 +54,6 @@ const FeaturesSection = forwardRef<HTMLDivElement, SingleSectionProps>(
   }
 );
 
+FeaturesSection.displayName = "FeaturesSection";
+
 export default FeaturesSection;

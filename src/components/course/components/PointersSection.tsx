@@ -46,4 +46,6 @@ const PointersSection = forwardRef<HTMLDivElement, SingleSectionProps>(({data}: 
     );
 })
 
+PointersSection.displayName = "PointersSection";
+
 export default PointersSection

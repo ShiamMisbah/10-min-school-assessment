@@ -63,4 +63,6 @@ const InstructorSection = forwardRef<HTMLDivElement, SingleSectionProps>(
   }
 );
 
+InstructorSection.displayName = "InstructorSection";
+
 export default InstructorSection;
