@@ -10,6 +10,7 @@ import { useRef, useState } from "react";
 import { Medium } from "@/dataType";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Image from "next/image";
+import VideoComponent from "../../VideoComponent";
 
 interface CarouselProps {
   mediaArray: Medium[];
@@ -67,20 +68,12 @@ export default function Carousel({mediaArray}: CarouselProps) {
                 />
               )}
               {media.resource_type === "video" && (
-                <div className="w-full h-full flex items-center justify-center">
-                  <Image
-                    src={media.thumbnail_url}
-                    alt={media.name}
-                    fill
-                    className="w-full h-full object-contain rounded-lg"
-                  />
-                  <button>
-                    <Play
-                      size={36}
-                      className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow rounded-full p-2 hover:bg-gray-100 cursor-pointer"
-                    />
-                  </button>
-                </div>
+                <VideoComponent
+                  thumbnail_url={media.thumbnail_url}
+                  alt={media.name}
+                  video_url={media.resource_value}
+                  resetTrigger={activeIndex !== idx}
+                />
               )}
             </SwiperSlide>
           ))}

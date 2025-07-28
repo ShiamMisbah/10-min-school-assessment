@@ -1,3 +1,4 @@
+import VideoComponent from '@/components/VideoComponent';
 import { SingleSectionProps } from '@/dataType';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
@@ -47,13 +48,7 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
             </div>
             <div>
               {item.file_type === "video" ? (
-                <video
-                  className="w-[200px] h-[120px] object-cover rounded-md"
-                  controls
-                >
-                  <source src={item.file_url} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <VideoComponent thumbnail_url={item.video_thumbnail} alt={item.title} video_url={item.file_url} />
               ) : (
                 <Image
                   src={item.file_url}
