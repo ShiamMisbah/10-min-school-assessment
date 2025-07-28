@@ -47,7 +47,7 @@ const Dashboard = () => {
       <div className="relative max-w-[1200px] mx-auto">
         <TitleCard title={data.title} description={data.description} />
         <div className="flex flex-col-reverse items-start">
-          <div className="max-w-full md:max-w-[50%] lg:max-w-[65%] mt-5">
+          <div className="bg-white max-w-full md:max-w-[50%] lg:max-w-[65%] mt-5">
             <CourseDetails sectionArray={data.sections} />
           </div>
           <SideBar
