@@ -26,7 +26,7 @@ const FeaturesSection = ({ data }: SingleSectionProps) => {
           data.bg_color !== "" ? `bg-[${data.bg_color}]` : "bg-gray-900"
         }`}
       >
-        <div className={`grid grid-cols-2`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2`}>
           {sectionData.map((item, index) => (
             <div
               className="flex gap-2 items-start max-w-[300px] m-2 py-4"

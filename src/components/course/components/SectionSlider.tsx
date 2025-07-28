@@ -18,7 +18,7 @@ const SectionSlider = ({ sectionArray, onSelectSection }: SectionSliderProps) =>
   const nextRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="relative w-full mx-auto px-10 mb-4">
+    <div className="relative w-[95%] md:w-full mx-auto px-6 mb-4">
       {/* Custom navigation buttons OUTSIDE the swiper */}
       <button
         ref={prevRef}

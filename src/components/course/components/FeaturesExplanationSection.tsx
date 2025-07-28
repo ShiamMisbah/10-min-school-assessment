@@ -29,7 +29,7 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
         {sectionData.map((item, index) => (
           <div
             key={index}
-            className={`flex justify-between ${
+            className={`flex flex-col-reverse md:flex-row justify-between ${
               index < sectionData.length - 1 ? "border-b border-b-gray-300" : ""
             } p-4`}
           >
@@ -46,7 +46,7 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className='mx-auto'>
               {item.file_type === "video" ? (
                 <VideoComponent thumbnail_url={item.video_thumbnail} alt={item.title} video_url={item.file_url} />
               ) : (

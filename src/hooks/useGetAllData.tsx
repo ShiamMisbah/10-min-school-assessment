@@ -2,16 +2,17 @@
 import { MainApiData } from "@/dataType";
 import { useEffect, useState } from "react";
 
-export default function useGetAllData() {
+export default function useGetAllData(lang:string) {
   const [data, setData] = useState<MainApiData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchMainData() {
+    async function fetchMainData(lang: string) {
+      setLoading(true);
       try {
         const res = await fetch(
-          "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=en",
+          `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`,
           {
             headers: {
               "X-TENMS-SOURCE-PLATFORM": "web",
@@ -19,7 +20,7 @@ export default function useGetAllData() {
           }
         );
         if (!res.ok) throw new Error("Failed to fetch course");
-        const json = await res.json();        
+        const json = await res.json();
         setData(json.data);
       } catch (err: any) {
         setError(err.message);
@@ -28,8 +29,8 @@ export default function useGetAllData() {
       }
     }
 
-    fetchMainData();
-  }, []);
+    fetchMainData(lang);
+  }, [lang]);
 
   return { data, loading, error };
 }
