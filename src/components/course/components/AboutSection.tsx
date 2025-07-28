@@ -1,6 +1,6 @@
-import { SingleSectionProps } from '@/dataType';
-import React, { useEffect, useState } from 'react'
-import Accordion from './Accordion';
+import { SingleSectionProps } from "@/dataType";
+import React, { forwardRef, useEffect, useState } from "react";
+import Accordion from "./Accordion";
 
 interface AboutValueProps {
   icon: string;
@@ -9,35 +9,37 @@ interface AboutValueProps {
   title: string;
 }
 
-const AboutSection = ({data}: SingleSectionProps) => {
-  const [sectionData, setSectionData] = useState<AboutValueProps[]>([]);
-      useEffect(() => {
-        if (data) {
-          setSectionData(data.values);
-        }
-      }, [data]); // ✅ only runs when `data` changes
+const AboutSection = forwardRef<HTMLDivElement, SingleSectionProps>(
+  ({ data }: SingleSectionProps, ref) => {
+    const [sectionData, setSectionData] = useState<AboutValueProps[]>([]);
+    useEffect(() => {
+      if (data) {
+        setSectionData(data.values);
+      }
+    }, [data]); // ✅ only runs when `data` changes
 
-  if (!data) return <div className=""></div>;
-  return (
-    <>
-      <div className="text-xl font-bold mb-4">{data.name}</div>
-      <div
-        className={`w-full border border-gray-400 rounded-md p-4 mb-4 ${
-          data.bg_color !== "" ? `bg-[${data.bg_color}]` : ""
-        }`}
-      >
-        {sectionData.map((item, index) => (
-          <Accordion
-            key={index}
-            title={item.title}
-            content={item.description}
-            arrayLength={sectionData.length}
-            currentIndex={index}
-          />
-        ))}
+    if (!data) return <div className=""></div>;
+    return (
+      <div ref={ref}>
+        <div ref={ref} className="text-xl font-bold mb-4">{data.name}</div>
+        <div
+          className={`w-full border border-gray-400 rounded-md p-4 mb-4 ${
+            data.bg_color !== "" ? `bg-[${data.bg_color}]` : ""
+          }`}
+        >
+          {sectionData.map((item, index) => (
+            <Accordion
+              key={index}
+              title={item.title}
+              content={item.description}
+              arrayLength={sectionData.length}
+              currentIndex={index}
+            />
+          ))}
+        </div>
       </div>
-    </>
-  );
-}
+    );
+  }
+);
 
-export default AboutSection
+export default AboutSection;

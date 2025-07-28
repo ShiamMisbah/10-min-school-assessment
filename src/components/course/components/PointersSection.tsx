@@ -1,6 +1,6 @@
 import { SingleSectionProps } from '@/dataType';
 import { Check } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 
 interface PointersValueProps {
   icon: string;
@@ -9,7 +9,7 @@ interface PointersValueProps {
   text: string;
 }
 
-const PointersSection = ({data}: SingleSectionProps) => {
+const PointersSection = forwardRef<HTMLDivElement, SingleSectionProps>(({data}: SingleSectionProps, ref) => {
     const [sectionData, setSectionData] = useState<PointersValueProps[]>([]);
     useEffect(() => {
       if (data) {
@@ -19,8 +19,8 @@ const PointersSection = ({data}: SingleSectionProps) => {
   
     if (!data) return <div className=""></div>;
     return (
-      <>
-        <div className="text-xl font-bold mb-4">{data.name}</div>
+      <div ref={ref}>
+        <div ref={ref} className="text-xl font-bold mb-4">{data.name}</div>
         <div
           className={`w-full border border-gray-400 rounded-md p-4 mb-4 ${
             data.bg_color !== "" ? `bg-[${data.bg_color}]` : ""
@@ -42,8 +42,8 @@ const PointersSection = ({data}: SingleSectionProps) => {
             ))}
           </div>
         </div>
-      </>
+      </div>
     );
-}
+})
 
 export default PointersSection

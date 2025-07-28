@@ -1,8 +1,8 @@
-import VideoComponent from '@/components/VideoComponent';
-import { SingleSectionProps } from '@/dataType';
-import { Check } from 'lucide-react';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
+import VideoComponent from "@/components/VideoComponent";
+import { SingleSectionProps } from "@/dataType";
+import { Check } from "lucide-react";
+import Image from "next/image";
+import React, { forwardRef, useEffect, useState } from "react";
 
 interface FeaturesExplanationValueProps {
   checklist: string[];
@@ -10,11 +10,16 @@ interface FeaturesExplanationValueProps {
   file_url: string;
   id: string;
   title: string;
-  video_thumbnail: string
+  video_thumbnail: string;
 }
 
-const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
-  const [sectionData, setSectionData] = useState<FeaturesExplanationValueProps[]>([]);
+const FeaturesExplanationSection = forwardRef<
+  HTMLDivElement,
+  SingleSectionProps
+>(({ data }: SingleSectionProps, ref) => {
+  const [sectionData, setSectionData] = useState<
+    FeaturesExplanationValueProps[]
+  >([]);
   useEffect(() => {
     if (data) {
       setSectionData(data.values);
@@ -23,7 +28,7 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
 
   if (!data) return <div className=""></div>;
   return (
-    <>
+    <div ref={ref}>
       <div className="text-xl font-bold mb-4">{data.name}</div>
       <div className="w-full border border-gray-400 rounded-md p-4 mb-4">
         {sectionData.map((item, index) => (
@@ -46,9 +51,13 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
                 ))}
               </ul>
             </div>
-            <div className='mx-auto'>
+            <div className="mx-auto">
               {item.file_type === "video" ? (
-                <VideoComponent thumbnail_url={item.video_thumbnail} alt={item.title} video_url={item.file_url} />
+                <VideoComponent
+                  thumbnail_url={item.video_thumbnail}
+                  alt={item.title}
+                  video_url={item.file_url}
+                />
               ) : (
                 <Image
                   src={item.file_url}
@@ -62,8 +71,8 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
-}
+});
 
-export default FeaturesExplanationSection
+export default FeaturesExplanationSection;
