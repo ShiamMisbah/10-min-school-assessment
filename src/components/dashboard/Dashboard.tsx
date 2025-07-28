@@ -42,12 +42,12 @@ const Dashboard = () => {
   return (
     <div className="">
       <div className="w-full bg-gray-900 min-h-[300px] absolute">
-        <button onClick={handleLanguage} className='z-40 absolute top-0 left-0 m-2 p-2 text-xs bg-white rounded-md cursor-pointer hover:bg-gray-400'>{language}</button>
+        <button onClick={handleLanguage} className='z-40 absolute top-0 left-0 m-2 p-2 text-xs bg-white text-black rounded-md cursor-pointer hover:bg-gray-400'>{language}</button>
       </div>
       <div className="relative max-w-[1200px] mx-auto">
         <TitleCard title={data.title} description={data.description} />
         <div className="flex flex-col-reverse items-start">
-          <div className="bg-white max-w-full md:max-w-[50%] lg:max-w-[65%] mt-5">
+          <div className=" max-w-full md:max-w-[50%] lg:max-w-[65%] mt-5">
             <CourseDetails sectionArray={data.sections} />
           </div>
           <SideBar

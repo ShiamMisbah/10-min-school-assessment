@@ -29,13 +29,13 @@ export default function Carousel({mediaArray}: CarouselProps) {
         {/* Custom Arrows */}
         <button
           ref={prevRef}
-          className="absolute z-10 left-2 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100"
+          className="absolute z-10 left-2 top-1/2 -translate-y-1/2 bg-white text-black shadow rounded-full p-1 hover:bg-gray-100"
         >
           <ChevronLeft size={15} />
         </button>
         <button
           ref={nextRef}
-          className="absolute z-10 right-2 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100"
+          className="absolute z-10 right-2 top-1/2 -translate-y-1/2 bg-white text-black shadow rounded-full p-1 hover:bg-gray-100"
         >
           <ChevronRight size={15} />
         </button>
@@ -117,7 +117,7 @@ export default function Carousel({mediaArray}: CarouselProps) {
                 <button>
                   <Play
                     size={20}
-                    className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow rounded-full p-1 cursor-pointer"
+                    className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white text-black shadow rounded-full p-1 cursor-pointer"
                   />
                 </button>
               </div>

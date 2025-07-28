@@ -40,7 +40,7 @@ const FeaturesExplanationSection = ({data}: SingleSectionProps) => {
                   <li key={index}>
                     <div className="flex gap-4">
                       <Check color="#6294F8" />
-                      <div className="text-md text-black mb-4">{list}</div>
+                      <div className="text-md mb-4">{list}</div>
                     </div>
                   </li>
                 ))}

@@ -34,7 +34,7 @@ const VideoComponent = ({thumbnail_url, alt, video_url, resetTrigger}: VideoComp
             <Play
               onClick={handlePlayVideo}
               size={36}
-              className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow rounded-full p-2 hover:bg-gray-100 cursor-pointer"
+              className="absolute z-10 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white text-black shadow rounded-full p-2 hover:bg-gray-100 cursor-pointer"
             />
           </button>
         </>

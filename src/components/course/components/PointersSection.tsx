@@ -36,7 +36,7 @@ const PointersSection = ({data}: SingleSectionProps) => {
                   <Check color="#6294F8" />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <div className="text-md text-black mb-4">{item.text}</div>
+                  <div className="text-md mb-4">{item.text}</div>
                 </div>
               </div>
             ))}
