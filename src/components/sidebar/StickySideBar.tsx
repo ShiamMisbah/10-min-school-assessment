@@ -14,7 +14,7 @@ const StickySideBar = ({ ctaText, checkList}: StickySidebarProps) => {
       className={`sticky bottom-2 top-auto md:ml-auto w-[100%] md:top-[50px] md:bottom-auto md:max-w-[50%] lg:max-w-[350px] min-h-[300px] bg-white flex flex-col`}
     >
       <div className="w-full h-full border border-gray-300 p-4 flex flex-col gap-4 text-black  ">
-        <div className="text-3xl font-bold">৳ 1000</div>
+        <div className="text-3xl font-bold">৳ 1050</div>
         <button className="w-full bg-green-700 hover:bg-green-900 text-xl py-2 shadow-green-900 rounded-md text-white ">
           {ctaText.name}
         </button>
