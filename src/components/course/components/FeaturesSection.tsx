@@ -10,7 +10,6 @@ interface FeaturesValueProps {
 }
 
 const FeaturesSection = ({ data }: SingleSectionProps) => {
-  console.log("FeaturesSection Data:", data);
   const [sectionData, setSectionData] = useState<FeaturesValueProps[]>([]);
   useEffect(() => {
     if (data) {

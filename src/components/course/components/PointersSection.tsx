@@ -10,7 +10,6 @@ interface PointersValueProps {
 }
 
 const PointersSection = ({data}: SingleSectionProps) => {
-  console.log("Pointers Data:", data);
     const [sectionData, setSectionData] = useState<PointersValueProps[]>([]);
     useEffect(() => {
       if (data) {

@@ -12,7 +12,6 @@ interface InstructionValueProps {
 }
 
 const InstructorSection = ({data}: SingleSectionProps) => {
-  console.log("InstructionSection Data:", data);
   const [sectionData, setSectionData] = useState<InstructionValueProps[]>([]);
   useEffect(() => {
     if (data) {

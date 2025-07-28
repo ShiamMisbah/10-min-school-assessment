@@ -10,7 +10,6 @@ interface AboutValueProps {
 }
 
 const AboutSection = ({data}: SingleSectionProps) => {
-  console.log("AboutSection Data:", data);
   const [sectionData, setSectionData] = useState<AboutValueProps[]>([]);
       useEffect(() => {
         if (data) {
@@ -29,9 +28,11 @@ const AboutSection = ({data}: SingleSectionProps) => {
       >
         {sectionData.map((item, index) => (
           <Accordion
-          key={index}
+            key={index}
             title={item.title}
             content={item.description}
+            arrayLength={sectionData.length}
+            currentIndex={index}
           />
         ))}
       </div>

@@ -1,11 +1,24 @@
 import { ChevronDown } from 'lucide-react';
 import React, { useState } from 'react'
 
-const Accordion = ({ title, content }: { title: string; content: string }) => {
+interface AccordionProps {
+  title: string;
+  content: string;
+  arrayLength: number;
+  currentIndex: number
+}
+
+const Accordion = ({ title, content, arrayLength, currentIndex }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-b-gray-300 border-dashed mx-3">
+    <div
+      className={`${
+        currentIndex < arrayLength - 1
+          ? "border-b border-b-gray-300 border-dashed"
+          : ""
+      }  mx-3`}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center py-4 text-left"
@@ -20,7 +33,10 @@ const Accordion = ({ title, content }: { title: string; content: string }) => {
       </button>
       {isOpen && (
         <div className="pb-4 text-gray-700 transition-all duration-300">
-          <div className='text-gray-500 custom-ul' dangerouslySetInnerHTML={{ __html: content }}></div>
+          <div
+            className="text-gray-500 custom-ul"
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
         </div>
       )}
     </div>
