@@ -1,5 +1,5 @@
 import { Checklist, CtaText, Medium } from '@/dataType'
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import React, { forwardRef} from 'react'
 import Carousal from './components/Carousal';
 import AllCheckList from './components/AllCheckList';
 
@@ -7,10 +7,9 @@ interface SidebarProps {
   ctaText: CtaText;
   checkList: Checklist[];
   mediaArray: Medium[];
-  isOutOfView: boolean;
 }
 
-const SideBar = forwardRef<HTMLDivElement, SidebarProps>(({ ctaText, checkList, mediaArray, isOutOfView }, ref) => {   
+const SideBar = forwardRef<HTMLDivElement, SidebarProps>(({ ctaText, checkList, mediaArray }, ref) => {   
      
   return (
     <div

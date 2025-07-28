@@ -50,9 +50,9 @@ export default function Carousel({mediaArray}: CarouselProps) {
           modules={[Navigation, Thumbs]}
           onBeforeInit={(swiper) => {
             // Fix for navigation ref assignment
-            // @ts-ignore
+            // @ts-expect-error
             swiper.params.navigation.prevEl = prevRef.current;
-            // @ts-ignore
+            // @ts-expect-error
             swiper.params.navigation.nextEl = nextRef.current;
           }}
           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}

@@ -1,5 +1,4 @@
 import { SingleSectionProps } from "@/dataType";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 interface FeaturesValueProps {

@@ -55,7 +55,6 @@ const Dashboard = () => {
             mediaArray={data.media}
             ctaText={data?.cta_text}
             checkList={data?.checklist}
-            isOutOfView={isOutOfView}
           />
           {isOutOfView && (
             <StickySideBar

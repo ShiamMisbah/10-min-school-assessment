@@ -41,9 +41,9 @@ const SectionSlider = ({ sectionArray, onSelectSection }: SectionSliderProps) =>
           nextEl: nextRef.current,
         }}
         onBeforeInit={(swiper) => {
-          // @ts-ignore
+          // @ts-expect-error
           swiper.params.navigation.prevEl = prevRef.current;
-          // @ts-ignore
+          // @ts-expect-error
           swiper.params.navigation.nextEl = nextRef.current;
         }}
         className="w-full"

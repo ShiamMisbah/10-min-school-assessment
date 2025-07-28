@@ -1,6 +1,5 @@
-import { Checklist, CtaText, Medium } from '@/dataType'
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
-import Carousal from './components/Carousal';
+import { Checklist, CtaText } from '@/dataType'
+import React from 'react'
 import AllCheckList from './components/AllCheckList';
 
 interface StickySidebarProps {
